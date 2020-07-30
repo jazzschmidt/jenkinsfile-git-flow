@@ -57,14 +57,17 @@ void setup(Closure cl) {
         cl()
     }
 }
+
 void build() {
-    sh "./gradlew ${GRADLE_OPTS} clean"
-    sh "./gradlew ${GRADLE_OPTS} assemble"
+    // Please marvel at the simplicity and obviousness of the steps,
+    // rather than having endless intendations of messy setup steps
+    sh "./gradlew clean"
+    sh "./gradlew assemble"
 }
 
 void test() {
     // Run the test task and eventually fail upon finishing
-    sh "./gradlew ${GRADLE_OPTS} test --continue"
+    sh "./gradlew test --continue"
 
     // Report test results
     junit 'build/test-results/**/TEST*.xml'
@@ -72,8 +75,8 @@ void test() {
 
 /** Publishes the project artifacts */
 def publish() {
-    // Publish to nexus, copy via ssh, ...
-    echo 'Publishing done 😉'
+    // Publish to nexus, copy via ssh, ... 😉
+    sh './gradlew publish'
 }
 
 
