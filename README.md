@@ -24,7 +24,7 @@ The build uses the following stages:
 - __Build__ - compiles the project
 - __Test__ - starts the tests and exposes reports
 - __Publish__ (master/release branch) - Publishes the artifacts
-    - Release branche publications must be confirmed manually
+    - Release branch publications must be confirmed manually
 
 ## The Build Script
 
