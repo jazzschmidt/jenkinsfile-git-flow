@@ -1,5 +1,6 @@
 description = 'Example project for demonstration of Jenkinsfile'
 group = 'com.github.jazzschmidt'
+version = '1.0.0'
 
 apply plugin: 'java'
 
@@ -13,4 +14,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+allprojects {
+    task('versions') {
+        doLast {
+            println "${project.name}:${version}"
+        }
+    }
 }
