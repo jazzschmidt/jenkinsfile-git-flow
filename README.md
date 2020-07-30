@@ -10,8 +10,9 @@ resides in the `jenkins-build.groovy` script.
 I often use this template on heavyweight projects, that shall be
 extended to include semantic versioning verification of branches,
 behave different in some special branches, publish or deploy the
-project with Jenkins steps and not directly with the build tool or
-all kind of things, that would mess up the build logic.
+project with Jenkins steps and not directly with the build tool,
+send fancy messages to Slack/Teams/whatever or all kind of things,
+that would otherwise mess up the build logic.
 
 Since I prefer to focus on _how to build this sh*t_, I also
 extracted the environment setup for the builds into a single setup
@@ -23,8 +24,10 @@ The build uses the following stages:
 
 - __Build__ - compiles the project
 - __Test__ - starts the tests and exposes reports
-- __Publish__ (master/release branch) - Publishes the artifacts
-    - Release branch publications must be confirmed manually
+- on _master_ branch:
+    - __Publish Snapshot__ - publishes a snapshot version
+- on _release_ branches;
+    - __Publish Release__ publishes a release version after manual confirmation
 
 ## The Build Script
 
