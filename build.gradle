@@ -1,0 +1,16 @@
+description = 'Example project for demonstration of Jenkinsfile'
+group = 'com.github.jazzschmidt'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+}
+
+test {
+    useJUnitPlatform()
+}
