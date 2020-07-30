@@ -7,6 +7,7 @@ String GRADLE_OPTS = '--stacktrace'
  * @param Closure The next build step
  */
 void setup(Closure cl) {
+    // Usually these are a lot of preparing steps in conjunction
     withEnv("PATH+JAVA_HOME=${tool('OPENJDK-11')}/bin") {
         cl()
     }
