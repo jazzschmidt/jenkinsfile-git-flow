@@ -69,11 +69,13 @@ void build() {
 }
 
 void test() {
-    // Run the test task and eventually fail upon finishing
-    sh "./gradlew test --continue"
-
-    // Report test results
-    junit 'build/test-results/**/TEST*.xml'
+    try {
+        // Run the test task and eventually fail upon finishing
+        sh "./gradlew test --continue"
+    } finally {
+        // Report test results
+        junit 'build/test-results/**/TEST*.xml'
+    }
 }
 
 /** Publishes the project artifacts */
