@@ -43,11 +43,13 @@ void build() {
 
 /** Tests the project and publishes the test results */
 void test() {
-    // Run the test task and eventually fail upon finishing
-    sh "./gradlew ${GRADLE_OPTS} test --continue"
-
-    // Report test results
-    junit 'build/test-results/**/TEST*.xml'
+    try {
+        // Run the test task and eventually fail upon finishing
+        sh "./gradlew ${GRADLE_OPTS} test --continue"
+    } finally {
+        // Report test results
+        junit 'build/test-results/**/TEST*.xml'
+    }
 }
 
 /** Publishes the project artifacts */
